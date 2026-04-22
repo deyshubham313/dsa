@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA.learn — Data Structures & Algorithms</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="bg-grid"></div>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">DSA<span>.</span>learn</a>
+    <div class="nav-links">
+      <a href="#topics" class="nav-link active">Topics</a>
+      <a href="#" class="nav-link" onclick="showToast('🚧 Roadmap coming soon!')">Roadmap</a>
+      <a href="#" class="nav-link" onclick="showToast('🚧 Challenges coming soon!')">Challenges</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Data Structures &amp; Algorithms</div>
+    <h1>Master DSA<br>Visually</h1>
+    <p>
+      Interactive 3D visualizations, step-by-step explanations, live demos, and quizzes 
+      — everything you need to truly understand DSA, not just memorize it.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#topics" class="btn btn-primary">🚀 Start Learning</a>
+      <a href="#" class="btn btn-outline" onclick="showToast('📊 Progress tracked automatically!')">📊 My Progress</a>
+    </div>
+
+    <!-- STATS ROW -->
+    <div style="display:flex;gap:32px;justify-content:center;margin-top:48px;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-family:'Orbitron',monospace;font-size:2rem;color:var(--accent-cyan)" id="stat-total">6</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);letter-spacing:2px">TOPICS</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1)"></div>
+      <div style="text-align:center">
+        <div style="font-family:'Orbitron',monospace;font-size:2rem;color:var(--accent-gold)">24</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);letter-spacing:2px">QUIZ QUESTIONS</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1)"></div>
+      <div style="text-align:center">
+        <div style="font-family:'Orbitron',monospace;font-size:2rem;color:var(--accent-green)" id="stat-done">0</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);letter-spacing:2px">COMPLETED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS GRID -->
+  <section class="section" id="topics">
+    <div class="section-title">Topics</div>
+    <div class="cards-grid" id="topics-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <!-- LEGEND -->
+  <section class="section">
+    <div class="section-title">Difficulty Guide</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="card-badge badge-easy">Easy</div>
+        <span style="color:var(--text-muted);font-size:0.85rem">Foundational concepts, great starting points</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="card-badge badge-medium">Medium</div>
+        <span style="color:var(--text-muted);font-size:0.85rem">Requires solid understanding of basics</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="card-badge badge-hard">Hard</div>
+        <span style="color:var(--text-muted);font-size:0.85rem">Advanced topics, interview-critical</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ 
+       TOPIC MODAL
+  ════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-topic-title">Topic</div>
+        <button class="modal-close" onclick="Modal.close()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- TABS -->
+        <div class="tabs">
+          <button class="tab active" data-tab="learn" onclick="Modal.switchTab('learn')">📚 Learn</button>
+          <button class="tab" data-tab="demo"  onclick="Modal.switchTab('demo')">🎮 Demo</button>
+          <button class="tab" data-tab="quiz"  onclick="Modal.switchTab('quiz')">📝 Quiz</button>
+        </div>
+
+        <!-- TAB CONTENTS -->
+        <div class="tab-content active" id="tab-learn">
+          <div id="learn-tab-content">Loading...</div>
+        </div>
+        <div class="tab-content" id="tab-demo">
+          <div id="demo-tab-content">Loading...</div>
+        </div>
+        <div class="tab-content" id="tab-quiz">
+          <div id="quiz-tab-content">Loading...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-item">
+      <div class="status-dot"></div>
+      <span>System Online</span>
+    </div>
+    <div class="status-item" style="margin-left:auto;color:var(--accent-cyan)">
+      DSA.learn v1.0 — Interactive Learning Platform
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- SCRIPTS — order matters -->
+  <script src="js/data.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
